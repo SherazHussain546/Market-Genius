@@ -38,8 +38,7 @@ export const getStockPrice = ai.defineTool(
         throw new Error('Could not parse price from Crypto.com API response.');
       } catch (error) {
         console.error('Error fetching from Crypto.com API:', error);
-        // Fallback or error handling
-        return Math.random() * 1000 + 50; // Placeholder
+        throw new Error('Failed to fetch cryptocurrency price.');
       }
     } else {
       // It's a stock
@@ -61,8 +60,7 @@ export const getStockPrice = ai.defineTool(
         throw new Error('Could not parse price from Alpha Vantage API response.');
       } catch (error) {
         console.error('Error fetching from Alpha Vantage API:', error);
-        // Fallback or error handling
-        return Math.random() * 1000 + 50; // Placeholder
+        throw new Error('Failed to fetch stock price.');
       }
     }
   }
