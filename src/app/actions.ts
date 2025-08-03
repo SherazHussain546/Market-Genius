@@ -2,12 +2,13 @@
 
 import {
   generateSignalContext,
+  type GenerateSignalContextOutput,
   type GenerateSignalContextInput,
 } from "@/ai/flows/generate-signal-context";
 
 export async function getSignalContextAction(
   ticker: string
-): Promise<{ summary: string } | { error: string }> {
+): Promise<GenerateSignalContextOutput | { error: string }> {
   try {
     const input: GenerateSignalContextInput = { ticker };
     const result = await generateSignalContext(input);

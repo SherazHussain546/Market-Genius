@@ -18,6 +18,8 @@ const GenerateSignalContextInputSchema = z.object({
 export type GenerateSignalContextInput = z.infer<typeof GenerateSignalContextInputSchema>;
 
 const GenerateSignalContextOutputSchema = z.object({
+  signal: z.enum(['buy', 'sell', 'hold']).describe('The recommended trading signal.'),
+  confidence: z.number().min(0).max(1).describe('The confidence level of the signal, from 0 to 1.'),
   summary: z.string().describe('A summary of recent news and market sentiment related to the stock.'),
 });
 export type GenerateSignalContextOutput = z.infer<typeof GenerateSignalContextOutputSchema>;
@@ -31,10 +33,11 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateSignalContextInputSchema},
   output: {schema: GenerateSignalContextOutputSchema},
   tools: [getStockPrice],
-  prompt: `You are a financial analyst summarizing recent news and market sentiment for a given stock ticker.
+  prompt: `You are a financial analyst providing a trading signal for a given stock ticker.
 
-  Provide a concise summary (under 200 words) of the recent news and market sentiment related to {{ticker}}.
-  Focus on information that would be relevant to understanding a buy or sell signal for this stock.
+  Based on recent news, market sentiment, and the current stock price, generate a trading signal (buy, sell, or hold) for {{ticker}}.
+  Also provide a confidence score (0.0 to 1.0) for this signal.
+  Finally, provide a concise summary (under 200 words) of the reasoning behind your recommendation.
   Use the getStockPrice tool to get the current price of the stock and include it in your summary.
 `,
 });

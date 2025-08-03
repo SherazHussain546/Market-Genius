@@ -12,6 +12,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { GenerateSignalContextOutput } from "@/ai/flows/generate-signal-context";
 
 type Props = {
   signal: Signal | null;
@@ -20,7 +21,7 @@ type Props = {
 };
 
 export function ContextDialog({ signal, open, onOpenChange }: Props) {
-  const [context, setContext] = useState<string | null>(null);
+  const [context, setContext] = useState<GenerateSignalContextOutput | string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -31,7 +32,7 @@ export function ContextDialog({ signal, open, onOpenChange }: Props) {
       getSignalContextAction(signal.symbol)
         .then((result) => {
           if ("summary" in result) {
-            setContext(result.summary);
+            setContext(result);
           } else {
             setContext(result.error);
             toast({
@@ -64,7 +65,7 @@ export function ContextDialog({ signal, open, onOpenChange }: Props) {
               <Skeleton className="h-4 w-3/4" />
             </div>
           ) : (
-            <p className="text-sm leading-relaxed">{context}</p>
+            <p className="text-sm leading-relaxed">{typeof context === 'string' ? context : context?.summary}</p>
           )}
         </div>
       </DialogContent>
