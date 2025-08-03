@@ -10,6 +10,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { getStockPrice } from '../tools/get-stock-price';
 
 const GenerateSignalContextInputSchema = z.object({
   ticker: z.string().describe('The ticker symbol of the stock.'),
@@ -29,10 +30,12 @@ const prompt = ai.definePrompt({
   name: 'generateSignalContextPrompt',
   input: {schema: GenerateSignalContextInputSchema},
   output: {schema: GenerateSignalContextOutputSchema},
+  tools: [getStockPrice],
   prompt: `You are a financial analyst summarizing recent news and market sentiment for a given stock ticker.
 
   Provide a concise summary (under 200 words) of the recent news and market sentiment related to {{ticker}}.
   Focus on information that would be relevant to understanding a buy or sell signal for this stock.
+  Use the getStockPrice tool to get the current price of the stock and include it in your summary.
 `,
 });
 
