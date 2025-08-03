@@ -1,4 +1,4 @@
-# Market Genius 🚀
+# Market Genius - An AI-Powered Financial Signal Platform
 
 **Live Site:** [https://marketgenius546.netlify.app/](https://marketgenius546.netlify.app/)
 
