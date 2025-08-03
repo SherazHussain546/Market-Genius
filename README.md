@@ -4,7 +4,7 @@
 
 Market Genius is an AI-powered financial signal platform that provides real-time trading insights for stocks and cryptocurrencies. It leverages generative AI to analyze market data, news, and sentiment to generate actionable buy, sell, or hold signals.
 
-![Market Genius Screenshot](https://placehold.co/800x400.png)
+![Market Genius Screenshot](marketgen.png)
 
 ## ✨ Features
 
