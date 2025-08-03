@@ -7,6 +7,7 @@ import { SignalsTable } from "./signals-table";
 import { DashboardFooter } from "./footer";
 import { ContextDialog } from "./context-dialog";
 import { SearchSignal } from "./search-signal";
+import { PushNotificationManager } from "./push-notification-manager";
 
 const mockTickers = [
   "AAPL",
@@ -54,6 +55,7 @@ export function DashboardClient() {
       <DashboardHeader />
       <main className="flex-1 container mx-auto px-4 py-8 md:px-8">
         <div className="space-y-8">
+          <PushNotificationManager />
           <SearchSignal />
           <SignalsTable signals={signals} onSelectSignal={setSelectedSignal} />
         </div>
