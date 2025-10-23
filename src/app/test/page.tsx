@@ -13,6 +13,10 @@ export default function TestPage() {
         src="https://embed.blogify.blog/embed.js" 
         strategy="afterInteractive" 
       />
+      <Script 
+        src="https://embedblogify.netlify.app/embed.js" 
+        strategy="afterInteractive" 
+      />
     </div>
   );
 }
