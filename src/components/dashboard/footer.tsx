@@ -25,7 +25,7 @@ export function DashboardFooter() {
           <p>
             Project by{" "}
             <a
-              href="https://sherazhussain546.github.io/portfolio/"
+              href="https://sherazhussain.synctech.ie"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-primary underline-offset-4 hover:underline"
