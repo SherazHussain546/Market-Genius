@@ -11,6 +11,7 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import { getStockPrice } from '../tools/get-stock-price';
+import { getFinancialNewsAndSentiment } from '../tools/get-financial-news';
 
 const GenerateSignalContextInputSchema = z.object({
   ticker: z.string().describe('The ticker symbol of the stock.'),
@@ -32,13 +33,16 @@ const prompt = ai.definePrompt({
   name: 'generateSignalContextPrompt',
   input: {schema: GenerateSignalContextInputSchema},
   output: {schema: GenerateSignalContextOutputSchema},
-  tools: [getStockPrice],
+  tools: [getStockPrice, getFinancialNewsAndSentiment],
   prompt: `You are a financial analyst providing a trading signal for a given stock ticker.
 
   Based on recent news, market sentiment, and the current stock price, generate a trading signal (buy, sell, or hold) for {{ticker}}.
-  Also provide a confidence score (0.0 to 1.0) for this signal.
-  Finally, provide a concise summary (under 200 words) of the reasoning behind your recommendation.
-  Use the getStockPrice tool to get the current price of the stock and include it in your summary.
+  Use the getStockPrice tool to get the current price.
+  Use the getFinancialNewsAndSentiment tool to get structured data on news headlines and their sentiment scores.
+  
+  In your summary, reference the specific sentiment (positive, negative, neutral) from the news analysis and the current stock price to justify your recommendation.
+  Provide a confidence score (0.0 to 1.0) for this signal.
+  Finally, provide a concise summary (under 200 words) of the reasoning.
 `,
 });
 
