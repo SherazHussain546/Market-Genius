@@ -31,7 +31,7 @@ export function DashboardFooter() {
               className="font-medium text-primary underline-offset-4 hover:underline"
             >
               Sheraz Hussain
-            </a>
+            </a>. Powered by <a href="https://synctech.ie" target="_blank" rel="noopener noreferrer" className="font-medium text-primary underline-offset-4 hover:underline">SYNC TECH Solutions</a>
           </p>
         </div>
       </div>
