@@ -10,16 +10,16 @@ import { SearchSignal } from "./search-signal";
 import { PushNotificationManager } from "./push-notification-manager";
 
 const mockTickers = [
-  "AAPL",
-  "GOOGL",
-  "TSLA",
-  "AMZN",
-  "MSFT",
+  "VOW3.DE", // Volkswagen (Germany)
+  "AIR.PA",  // Airbus (France)
+  "SIE.DE",  // Siemens (Germany)
+  "SAN.MC",  // Santander (Spain)
+  "UNA.AS",  // Unilever (Netherlands)
   "BTC-USD",
   "ETH-USD",
-  "NVDA",
-  "JPM",
-  "V",
+  "SHELL.L", // Shell (UK)
+  "NESN.SW", // Nestlé (Switzerland)
+  "ASML.AS", // ASML Holding (Netherlands)
 ];
 
 export function DashboardClient() {

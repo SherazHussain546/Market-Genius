@@ -18,7 +18,7 @@ export const getFinancialNewsAndSentiment = ai.defineTool(
     name: 'getFinancialNewsAndSentiment',
     description: 'Fetches recent news articles for a financial ticker and analyzes their sentiment using the Google Cloud Natural Language API.',
     inputSchema: z.object({
-      ticker: z.string().describe('The ticker symbol to search news for (e.g., AAPL, GOOGL).'),
+      ticker: z.string().describe('The ticker symbol to search news for (e.g., VOW3.DE, AIR.PA).'),
     }),
     outputSchema: z.object({
       articles: z.array(z.object({
@@ -37,7 +37,7 @@ export const getFinancialNewsAndSentiment = ai.defineTool(
       throw new Error('FINANCIAL_DATA_API_KEY is not set.');
     }
 
-    const url = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${input.ticker}&apikey=${apiKey}&limit=5`;
+    const url = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${input.ticker}&topics=financial_markets&apikey=${apiKey}&limit=5`;
 
     try {
       const response = await fetch(url);

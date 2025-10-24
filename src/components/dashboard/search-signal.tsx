@@ -84,7 +84,7 @@ export function SearchSignal() {
           AI Signal Search
         </CardTitle>
         <CardDescription>
-          Enter a stock or crypto ticker to get an AI-powered analysis.
+          Enter a European stock or crypto ticker to get an AI-powered analysis.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -99,7 +99,7 @@ export function SearchSignal() {
               render={({ field }) => (
                 <FormItem className="flex-1">
                   <FormControl>
-                    <Input placeholder="e.g., AAPL, BTC-USD" {...field} />
+                    <Input placeholder="e.g., VOW3.DE, BTC-USD" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
