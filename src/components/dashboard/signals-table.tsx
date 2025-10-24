@@ -103,7 +103,7 @@ export function SignalsTable({ signals, onSelectSignal }: Props) {
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right font-mono">
-                    ${signal.price.toFixed(2)}
+                    €{signal.price.toFixed(2)}
                   </TableCell>
                   <TableCell className="hidden text-right text-muted-foreground md:table-cell">
                     {new Intl.DateTimeFormat("en-US", {
